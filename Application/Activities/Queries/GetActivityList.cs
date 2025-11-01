@@ -14,22 +14,7 @@ public class GetActivityList
     {
         public async Task<List<Activity>> Handle(Query request, CancellationToken cancellationToken)
         {
-            try
-            {
-                // Simulate delay
-                for (int i = 0; i < 10; i++)
-                {
-                    cancellationToken.ThrowIfCancellationRequested();
-                    await Task.Delay(1000, cancellationToken);
-                    logger.LogInformation($"Delay {i} has completed");
-                }
-               
-            }
-            catch (TaskCanceledException)
-            {
-                // Handle the cancellation if needed
-                logger.LogInformation("Task was cancelled");
-            }
+           
             return await context.Activities.ToListAsync(cancellationToken);
         }
     }
